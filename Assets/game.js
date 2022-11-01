@@ -10,7 +10,9 @@ var acceptingAnswers = true;
 var score = 0;
 var questionCounter = 0;
 var availableQuestions = [];
+var count = 30;
 
+// Question Array
 var questions = [
     {
         question: 'Inside which HTML element do we embed the JavaScript file in?',
@@ -97,12 +99,13 @@ var questions = [
 
 // Constants
 const correctBonus = 10
-const maxQuestions = 10
+const maxQuestions = 7
 
 function startGame() {
     questionCounter = 0;
     score = 0;
     availableQuestions = [...questions];
+    count = 20000;
     getNewQuestion();
 };
 
@@ -115,6 +118,20 @@ function getNewQuestion() {
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
     currentQuestion = availableQuestions[questionIndex];
     question.innerText = currentQuestion.question;
+
+    var interval = setInterval(function () {
+        document.getElementById('timer').innerText = count;
+        count--;
+        if (count <= 0) {
+            clearInterval(interval);
+            document.getElementById('timer').innerHTML = "Time's Up!";
+        }
+
+        if (count === 0) {
+            return window.location.assign('end.html');
+        }
+
+    });
 
     choices.forEach(choice => {
         const number = choice.dataset['number'];
@@ -141,12 +158,15 @@ choices.forEach((choice) => {
         if (classToApply === 'correct') {
             updateScore(correctBonus);
         }
+
         selectedChoice.parentElement.classList.add(classToApply);
         setTimeout(() => {
             selectedChoice.parentElement.classList.remove(classToApply);
 
         }, 1000);
         getNewQuestion();
+        // updateTimer();
+
     });
 });
 
@@ -155,4 +175,11 @@ function updateScore(num) {
     scoreText.innerText = score;
 }
 
+// function updateTimer() {
+//     if (classToApply === 'correct') {
+//         count = num + 5000;
+//     } else {
+//         count = num - 5000;
+//     }
+// }
 startGame();
