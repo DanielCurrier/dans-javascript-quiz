@@ -27,8 +27,11 @@ The score page will store a total of 5 high scores. To clear this data, try usin
 
 To see what is going on under the hood, inspect the page using Chrome DevTools 🛠.
 
+Here is a link for the application: https://lorddanklin.github.io/dans-javascript-quiz/
+
 ## Credits
 N/A
 
 ## License
 Please refer to the LICENSE.md file in the repo 😁.
+
