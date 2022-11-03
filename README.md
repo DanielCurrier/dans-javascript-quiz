@@ -11,7 +11,7 @@ To use this program, navigate to the webpage using the given URL. Upon clicking,
 
 Use the play button to begin the quiz. You will be tasked to answer 7 questions regarding JavaScript within 20 seconds. Correct answers will provide you with 5 additional seconds and 10 points. If you guess incorrectly, you will be deducted 5 seconds from your total time. If you complete the quiz or run out of time, you will be redirected to the end page. 
 
-Here is a refernece image of the quiz page: 
+Here is a reference image of the quiz page: 
 ![](Assets\quiz-page.png)
 
 Once you have reached the end page, your score will be tallied and you will be given the option to save your score with a form to add a name. Click on the save button once a name has been given!
