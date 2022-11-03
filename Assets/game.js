@@ -126,6 +126,7 @@ function getNewQuestion() {
         if (count <= 0) {
             clearInterval(interval);
             document.getElementById('timer').innerHTML = "Time's Up!";
+            return window.location.assign('end.html');
         }
 
         if (count === 0) {
@@ -158,15 +159,18 @@ choices.forEach((choice) => {
 
         if (classToApply === 'correct') {
             updateScore(correctBonus);
+            count = count + 5000;
         }
 
+        if (classToApply === 'incorrect') {
+            count = count - 5000;
+        }
         selectedChoice.parentElement.classList.add(classToApply);
         setTimeout(() => {
             selectedChoice.parentElement.classList.remove(classToApply);
 
         }, 1000);
         getNewQuestion();
-        // updateTimer();
 
     });
 });
@@ -176,11 +180,4 @@ function updateScore(num) {
     scoreText.innerText = score;
 }
 
-// function updateTimer() {
-//     if (classToApply === 'correct') {
-//         count = num + 5000;
-//     } else {
-//         count = num - 5000;
-//     }
-// }
 startGame();
